@@ -52,9 +52,10 @@ Several ArrayLists are created:
 * QList\<unsigned int\> index_elem : list of DOM element indexes that match the "id=STROKES" elements in the SVG file and the strDom list for the simulation's raw data. The size of this list is necessarily identical to that of 'QList\<QDomElement\> listElem'.
 
 In the other case, (logMessage.contains("Report received")) i.e. all but "0 s", the program updates the array list necessary for the changes to be made in the SVG file loaded in memory.
-These are all the arrayLists except the following:
-*QStringList strDom
-*QList\<unsigned int\>
+These are all the arrayLists except the following: 
+* QStringList strDom
+* QList\<unsigned int\>
+
 After this, the SVG_Viewer::refresh() method performs the visual update.
 
 Installation & configuration

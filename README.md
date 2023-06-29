@@ -1,4 +1,4 @@
-RISC-V Basic Simulation
+RISC-V Basic Visual Simulation
 =======
 
 The program
@@ -31,7 +31,7 @@ The program thus modifies the values contained in the elements and changes the c
 
 How it works
 -----------
-The project contains an SVG_Viewer class for RAM storage and SVG file management. It contains methods that call on those of QDomDocument and QDomElement.
+The project contains an SVG_Viewer class for RAM storage and SVG file management. It contains methods that call on those of QDomDocument and QDomElement classes.
 
 For example, the method for finding an SVG element according to the group hierarchy is: findDomElement from SVG_Viewer. 
 
@@ -39,6 +39,17 @@ The SVG_Viewer class also contains methods for changing :
 * the appearance of an element (with the style attribute)
 * the content of an XML neud, which corresponds to SVG text values (e.g. 0x221298 being the default values)
 
+
+Once systemC has been configured and the objects required for SVG management have been built, the main algorithm for visually updating SVG is found in the "MainWindow::onMessage" method.
+
+This method is called after each click on the "clock" button in the main window.
+
+In the first case, when SystemC indicates that this is the first click (when logMessage.contains("Report received: 0 s")), the arraylists required to update the values are initialized. This provides flexibility if you wish to add more components to simulate. This would imply new elements in the "id=STROKED" group of the SVG file, but also new elements in SystemC. This is the reason for the arrayList.
+Several ArrayLists are created: 
+* QStringList strDom: a list of strings taken from the raw data of the SystemC simulation.
+* QList<QDomElement> listElem: list of DOM elements found between the SVG file and the simulation data.
+* QStringList prior_value: list of prior values (clock cycle before) of all raw data in the SystemC simulation.
+* QList<unsigned int> index_elem : list of DOM element indexes that match the "id=STROKES" elements in the SVG file and the strDom list for the simulation's raw data. The size of this list is necessarily identical to that of 'QList<QDomElement> listElem'.
 
 Installation & configuration
 -----------

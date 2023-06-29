@@ -24,4 +24,21 @@ To make it easier to manage the elements to be modified in the SVG file, it was 
 As a result, only elements contained in the "id=STROKES" group will be modified by the program.
 Each element is characterized by a group containing wire connections and values.
 
+You can view the SVG in XML format with a text editor or with the Inkscape editor.
+In this way, it is possible to view groups, particularly those in the "id=STROKES" group.
+
 The program thus modifies the values contained in the elements and changes the color when the value changes with respect to the old clock cycle.
+
+How it works
+-----------
+The project contains an SVG_Viewer class for RAM storage and SVG file management. It contains methods that call on those of QDomDocument and QDomElement.
+
+For example, the method for finding an SVG element according to the group hierarchy is: findDomElement from SVG_Viewer. 
+
+The SVG_Viewer class also contains methods for changing :
+* the appearance of an element (with the style attribute)
+* the content of an XML neud, which corresponds to SVG text values (e.g. 0x221298 being the default values)
+
+
+Installation & configuration
+-----------

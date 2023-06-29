@@ -47,9 +47,15 @@ This method is called after each click on the "clock" button in the main window.
 In the first case, when SystemC indicates that this is the first click (when logMessage.contains("Report received: 0 s")), the arraylists required to update the values are initialized. This provides flexibility if you wish to add more components to simulate. This would imply new elements in the "id=STROKED" group of the SVG file, but also new elements in SystemC. This is the reason for the arrayList.
 Several ArrayLists are created: 
 * QStringList strDom: a list of strings taken from the raw data of the SystemC simulation.
-* QList \<QDomElement\> listElem: list of DOM elements found between the SVG file and the simulation data.
+* QList\<QDomElement\> listElem: list of DOM elements found between the SVG file and the simulation data.
 * QStringList prior_value: list of prior values (clock cycle before) of all raw data in the SystemC simulation.
-* QList<unsigned int> index_elem : list of DOM element indexes that match the "id=STROKES" elements in the SVG file and the strDom list for the simulation's raw data. The size of this list is necessarily identical to that of 'QList<QDomElement> listElem'.
+* QList\<unsigned int\> index_elem : list of DOM element indexes that match the "id=STROKES" elements in the SVG file and the strDom list for the simulation's raw data. The size of this list is necessarily identical to that of 'QList\<QDomElement\> listElem'.
+
+In the other case, (logMessage.contains("Report received")) i.e. all but "0 s", the program updates the array list necessary for the changes to be made in the SVG file loaded in memory.
+These are all the arrayLists except the following:
+*QStringList strDom
+*QList\<unsigned int\>
+After this, the SVG_Viewer::refresh() method performs the visual update.
 
 Installation & configuration
 -----------

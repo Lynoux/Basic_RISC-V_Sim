@@ -60,3 +60,12 @@ After this, the SVG_Viewer::refresh() method performs the visual update.
 
 Installation & configuration
 -----------
+The compilation kit used is: "Desktop Qt 6.4.2 MinGW 64-bit".
+
+The main window is formatted using the mainwindow.ui file in Qt Creator 10.0.2.
+
+To test the application, it is necessary to save the Schematic_Paco.svg file in a known folder or in the same folder as the built application. In either case, you can change the path to the program on line 254 of the SVG_Viewer.cpp file.
+
+
+The SystemC library is compiled from sources downloaded from their website.
+To generate the makefile required for compilation, you can use CMake with value 17 in CMAKE_CXX_STANDARD
